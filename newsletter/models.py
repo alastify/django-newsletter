@@ -17,6 +17,8 @@ from django.utils.timezone import now
 
 from sorl.thumbnail import ImageField
 
+from datetime import datetime
+
 from .utils import (
     make_activation_code, get_default_sites, ACTIONS
 )
@@ -24,6 +26,23 @@ from .utils import (
 logger = logging.getLogger(__name__)
 
 AUTH_USER_MODEL = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
+
+
+def get_month():
+    m = datetime.now().month + 1
+    if m == 13:
+        m = 1
+
+    return m
+
+
+def get_year():
+    n = datetime.now()
+    y = n.year
+    if n.month == 12:
+        y += 1
+
+    return y
 
 
 @python_2_unicode_compatible
@@ -494,6 +513,25 @@ class Message(models.Model):
     )
     date_modify = models.DateTimeField(
         verbose_name=_('modified'), auto_now=True, editable=False
+    )
+
+    program = models.BooleanField(
+        default=False, verbose_name="Rozeslat program",
+        help_text="Zaškrtněte, pokud slouží tento newsletter pro rozesílání programu",
+    )
+
+    program_month = models.IntegerField(
+        verbose_name="Měsíc",
+        default=get_month,
+        blank=True,
+        help_text="Pro který měsíc se má rozeslat program. Zadejte číslo."
+    )
+
+    program_year = models.IntegerField(
+        verbose_name="Rok",
+        default=get_year,
+        blank=True,
+        help_text="Pro který rok se má rozeslat program."
     )
 
     class Meta:
