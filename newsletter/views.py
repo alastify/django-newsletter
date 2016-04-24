@@ -606,7 +606,7 @@ class SubmissionArchiveDetailView(SubmissionViewBase, DateDetailView):
                 'message belongs to.'
             ))
 
-        return html_template
+        return html_template.template.name
 
     def render_to_response(self, context, **response_kwargs):
         """
