@@ -61,6 +61,11 @@ class Newsletter(models.Model):
         max_length=200, verbose_name=_('sender'), help_text=_('Sender name')
     )
 
+    program = models.BooleanField(
+        default=False, verbose_name="Rozesílá program",
+        help_text="Zaškrtněte, pokud slouží tento newsletter pro rozesílání programu",
+    )
+
     visible = models.BooleanField(
         default=True, verbose_name=_('visible'), db_index=True
     )
@@ -515,16 +520,11 @@ class Message(models.Model):
         verbose_name=_('modified'), auto_now=True, editable=False
     )
 
-    program = models.BooleanField(
-        default=False, verbose_name="Rozeslat program",
-        help_text="Zaškrtněte, pokud slouží tento newsletter pro rozesílání programu",
-    )
-
     program_month = models.IntegerField(
         verbose_name="Měsíc",
         default=get_month,
         blank=True,
-        help_text="Pro který měsíc se má rozeslat program. Zadejte číslo."
+        help_text="Jde-li o rozesílání programu, pak pro který měsíc se má program rozeslat. Zadejte číslo."
     )
 
     program_year = models.IntegerField(
