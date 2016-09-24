@@ -44,20 +44,21 @@ except:
 
 
 setup(
-    name='django-newsletter',
-    version="0.6",
+    name='django-newsletter-khm',
+    version="0.6.1",
     description=(
         'Django app for managing multiple mass-mailing lists with both '
         'plaintext as well as HTML templates (and pluggable WYSIWYG editors '
         'for messages), images and a smart queueing system all right from '
         'the admin interface.'
+        'Modifikovaná verze pro KHM.'
     ),
     long_description=README,
     install_requires=REQUIREMENTS,
     license='AGPL',
-    author='Mathijs de Bruin',
-    author_email='mathijs@mathijsfietst.nl',
-    url='http://github.com/dokterbob/django-newsletter/',
+    author='Mathijs de Bruin, Ivan Pomykacz',
+    author_email='mist@alastify.cz',
+    url='https://github.com/alastify/django-newsletter/',
     packages=find_packages(),
     include_package_data=True,
     classifiers=(

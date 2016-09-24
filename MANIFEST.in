@@ -8,7 +8,7 @@ recursive-include docs *
 prune docs/_build
 
 # Fixtures, templates, static files, strings and test data
-recursive-include newsletter/fixtures *
-recursive-include newsletter/templates *
-recursive-include newsletter/static *
-recursive-include newsletter/locale *
+recursive-include newsletter_khm/fixtures *
+recursive-include newsletter_khm/templates *
+recursive-include newsletter_khm/static *
+recursive-include newsletter_khm/locale *

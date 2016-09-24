@@ -1,5 +1,5 @@
 settings_local.py
-static/newsletter/images
+static/newsletter_khm/images
 portnumber
 database.sqlite
 *.pyc
