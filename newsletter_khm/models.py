@@ -383,7 +383,7 @@ class Subscription(models.Model):
             'MEDIA_URL': settings.MEDIA_URL
         }
 
-        unescaped_context = Context(variable_dict, autoescape=False)
+        unescaped_context = Context(variable_dict)
 
         subject = subject_template.render(unescaped_context).strip()
         text = text_template.render(unescaped_context)
@@ -641,7 +641,7 @@ class Submission(models.Model):
             'MEDIA_URL': settings.MEDIA_URL
         }
 
-        unescaped_context = Context(variable_dict, autoescape=False)
+        unescaped_context = Context(variable_dict)
 
         subject = self.message.subject_template.render(unescaped_context).strip()
         text = self.message.text_template.render(unescaped_context)

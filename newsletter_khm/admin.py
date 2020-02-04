@@ -252,12 +252,14 @@ class MessageAdmin(admin.ModelAdmin, ExtendibleModelAdminMixin):
                 'message belongs to.'
             ))
 
-        c = Context({'message': message,
-                     'site': Site.objects.get_current(),
-                     'newsletter': message.newsletter,
-                     'date': now(),
-                     'STATIC_URL': settings.STATIC_URL,
-                     'MEDIA_URL': settings.MEDIA_URL})
+        c = {
+            'message': message,
+            'site': Site.objects.get_current(),
+            'newsletter': message.newsletter,
+            'date': now(),
+            'STATIC_URL': settings.STATIC_URL,
+            'MEDIA_URL': settings.MEDIA_URL
+        }
 
         return HttpResponse(message.html_template.render(c))
 
@@ -265,14 +267,14 @@ class MessageAdmin(admin.ModelAdmin, ExtendibleModelAdminMixin):
     def preview_text(self, request, object_id):
         message = self._getobj(request, object_id)
 
-        c = Context({
+        c = {
             'message': message,
             'site': Site.objects.get_current(),
             'newsletter': message.newsletter,
             'date': now(),
             'STATIC_URL': settings.STATIC_URL,
             'MEDIA_URL': settings.MEDIA_URL
-        }, autoescape=False)
+        }
 
         return HttpResponse(
             message.text_template.render(c),
